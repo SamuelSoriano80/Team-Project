@@ -30,6 +30,10 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
+    if (!product || !product.Brand) {
+        console.error("Invalid product data:", product);
+        return;
+    }
     document.querySelector('h2').textContent = product.Brand.Name;
     document.querySelector('h3').textContent = product.NameWithoutBrand;
 
