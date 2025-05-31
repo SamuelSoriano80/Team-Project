@@ -9,14 +9,7 @@ export default class ProductDetails {
     }
 
     async init() {
-        console.log("Looking for product ID:", this.productId);
         this.product = await this.dataSource.findProductById(this.productId);
-        console.log("Product fetched:", this.product);
-
-        if (!this.product) {
-            document.body.innerHTML = "<p>Product not found.</p>";
-            return;
-        }
 
         this.renderProductDetails();
 
@@ -32,21 +25,11 @@ export default class ProductDetails {
     }
 
     renderProductDetails() {
-        if (!this.product || !this.product.Brand) {
-            console.error("Product data is missing or malformed:", this.product);
-            document.body.innerHTML = "<p>Sorry, product details could not be loaded.</p>";
-            return;
-        }
         productDetailsTemplate(this.product);
     }
 }
 
 function productDetailsTemplate(product) {
-    if (!product?.Brand?.Name || !product.NameWithoutBrand) {
-        console.error("Incomplete product data:", product);
-        return;
-    }
-
     document.querySelector('h2').textContent = product.Brand.Name;
     document.querySelector('h3').textContent = product.NameWithoutBrand;
 
