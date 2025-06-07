@@ -33,7 +33,7 @@ function productDetailsTemplate(product) {
     document.querySelector("#p-name").textContent = product.NameWithoutBrand;
 
     const productImage = document.querySelector("#p-image");
-    productImage.src = product.Images.PrimaryExtraLarge;
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
     const euroPrice = new Intl.NumberFormat('de-DE',
         {
