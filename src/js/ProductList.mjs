@@ -18,17 +18,34 @@ export default class ProductList {
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = listElement;
+        this.products = [];
     }
 
     async init() {
+        this.products = await this.dataSource.getData(this.category);
         const list = await this.dataSource.getData(this.category);
-        console.log("API product list data:", list);
         this.renderList(list);
         document.querySelector(".title").textContent = this.category;
+        this.addSortListener();
     }
 
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
+    addSortListener() {
+        const sortElement = document.getElementById("sort");
+        if (sortElement) {
+            sortElement.addEventListener("change", () => {
+                let sorted = [...this.products];
+                const value = sortElement.value;
+                if (value === "name") {
+                    sorted.sort((a, b) => a.Name.localeCompare(b.Name));
+                } else if (value === "price") {
+                    sorted.sort((a, b) => a.FinalPrice - b.FinalPrice);
+                }
+                this.renderList(sorted);
+            });
+        }
+    }
 }
