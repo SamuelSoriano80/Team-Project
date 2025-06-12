@@ -3,7 +3,7 @@ import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
@@ -14,7 +14,7 @@ function cartItemTemplate(item) {
     <img
       src="${item.Image}"
       alt="${item.Name}"
-    />
+   >
   </a>
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>

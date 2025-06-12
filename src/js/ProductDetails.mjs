@@ -12,7 +12,7 @@ export default class ProductDetails {
         this.product = await this.dataSource.findProductById(this.productId);
         this.renderProductDetails();
         document
-            .getElementById("addToCart")
+            .getElementById("add-to-cart")
             .addEventListener("click", this.addProductToCart.bind(this));
     }
 
@@ -33,7 +33,7 @@ function productDetailsTemplate(product) {
     document.querySelector("#p-name").textContent = product.NameWithoutBrand;
 
     const productImage = document.querySelector("#p-image");
-    productImage.src = product.Images.PrimaryLarge;
+    productImage.src = product.Images.PrimaryExtraLarge;
     productImage.alt = product.NameWithoutBrand;
     const euroPrice = new Intl.NumberFormat('de-DE',
         {
