@@ -309,3 +309,21 @@ footer {
   border-top: 1px solid var(--tertiary-color);
   padding: 1em;
 }
+
+@keyframes cart-bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+#cart-icon.animate {
+  animation: cart-bounce 0.3s ease;
+}
