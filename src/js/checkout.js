@@ -8,7 +8,7 @@ order.init();
 
 document
     .querySelector("#zip")
-    .addEventListener("blur", order.calculateOrderTotal.bind(order));
+    .addEventListener("blur", order.calculateOrdertotal.bind(order));
 
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
     e.preventDefault();
