@@ -310,6 +310,10 @@ footer {
   padding: 1em;
 }
 
+#cart-icon {
+  display: inline-block;
+}
+
 @keyframes cart-bounce {
   0% {
     transform: scale(1);
@@ -326,4 +330,10 @@ footer {
 
 #cart-icon.animate {
   animation: cart-bounce 0.3s ease;
+  transform-origin: center center;
+}
+
+#cart-icon.animate svg {
+  animation: cart-bounce 0.3s ease;
+  transform-origin: center center;
 }
