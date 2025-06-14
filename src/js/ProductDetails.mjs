@@ -12,7 +12,7 @@ export default class ProductDetails {
         this.product = await this.dataSource.findProductById(this.productId);
         this.renderProductDetails();
         document
-            .getElementById("addToCart")
+            .getElementById("add-to-cart")
             .addEventListener("click", this.addProductToCart.bind(this));
     }
 
@@ -20,6 +20,13 @@ export default class ProductDetails {
         const cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
+
+        const cartIcon = document.getElementById("cart-icon");
+        if (cartIcon) {
+            cartIcon.classList.remove("animate");
+            void cartIcon.offsetWidth;
+            cartIcon.classList.add("animate");
+        }
     }
 
     renderProductDetails() {
